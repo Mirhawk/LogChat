@@ -51,8 +51,6 @@ public class Cntlr extends HttpServlet {
 		lb.setPassword(password);
 		
 		boolean res = lb.validate();
-		
-		
 		if(res)
 		{
 			RequestDispatcher rd = request.getRequestDispatcher("Logged.html");

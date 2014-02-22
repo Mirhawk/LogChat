@@ -13,10 +13,10 @@
 <title>Chat</title>
 </head>
 <body>
-
+<form action="Cntlr" method="get">
 		UserName: <input type="text" name="un"> <br>
 		Password:<input type="password" name="pwd"> <br>
-                <form action="Cntlr" method="get">
+                
 		<input type="submit" value="submit">
 </form>
 </body>

@@ -14,6 +14,7 @@ package webc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import sun.jdbc.odbc.OdbcDef;
 
 public class Cnct {
 	
@@ -30,7 +31,7 @@ public class Cnct {
 			e.printStackTrace();
 		}
           try {
-			con =DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","piyush","apache");
+			con =DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","mirhawk","apache");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
