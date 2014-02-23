@@ -6,6 +6,11 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -58,7 +63,33 @@ public class Reg extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		
+		String name=request.getParameter("usn");
+		String password = request.getParameter("pswd");
+		
+		out.println("<html> <body>");
+		Cnct cn = new Cnct();
+		
+		Connection con = cn.getConnection();
+		
+		String query = "insert into users values('" + name +"','"+password+"'";
+		
+		PreparedStatement pstmt;
+		try {
+			    pstmt = con.prepareStatement(query);
+			    			 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
+		out.println("</body></html>");
+		
+        
     }
 
     /**
