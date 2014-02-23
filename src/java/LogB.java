@@ -57,15 +57,6 @@ public class LogB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-		if(password.equals("vishal"))
-		{
-			result = true;
-			return result;
-		}
-			
 		return result;
 	
 	}
