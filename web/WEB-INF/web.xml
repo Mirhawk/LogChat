@@ -12,6 +12,10 @@
         <servlet-name>LogB</servlet-name>
         <servlet-class>LogB</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Reg</servlet-name>
+        <servlet-class>Reg</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Cnct</servlet-name>
         <url-pattern>/Cnct</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>LogB</servlet-name>
         <url-pattern>/LogB</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Reg</servlet-name>
+        <url-pattern>/Reg</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -47,9 +47,7 @@ public class LogB {
 		PreparedStatement pstmt;
 		try {
 			    pstmt = con.prepareStatement(query);
-			
 			    pstmt.setString(1,password);
-			
 			    ResultSet rs = pstmt.executeQuery();
 			    result = rs.next();
 			

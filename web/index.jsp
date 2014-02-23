@@ -10,7 +10,7 @@
 <html>
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Chat</title>
+<title>Chat Login</title>
 </head>
 <body>
 <form action="Cntlr" method="get">
