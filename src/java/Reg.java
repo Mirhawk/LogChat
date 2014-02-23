@@ -75,11 +75,16 @@ public class Reg extends HttpServlet {
 		
 		Connection con = cn.getConnection();
 		
-		String query = "insert into users values('" + name +"','"+password+"'";
+		String query = "insert into users values('" + name +"','"+password+"')";
+                out.println(""+name);
+                out.println("<br><br>");
+                out.println(""+password);
+                
 		
 		PreparedStatement pstmt;
 		try {
 			    pstmt = con.prepareStatement(query);
+                            ResultSet rs = pstmt.executeQuery();
 			    			 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
