@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <servlet>
-        <servlet-name>Cntlr</servlet-name>
-        <servlet-class>webc.Cntlr</servlet-class>
+        <servlet-name>Cnct</servlet-name>
+        <servlet-class>Cnct</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Cnct</servlet-name>
-        <servlet-class>webc.Cnct</servlet-class>
+        <servlet-name>Cntlr</servlet-name>
+        <servlet-class>Cntlr</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LogB</servlet-name>
-        <servlet-class>webc.LogB</servlet-class>
+        <servlet-class>LogB</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>Cntlr</servlet-name>
-        <url-pattern>/Cntlr</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Cnct</servlet-name>
         <url-pattern>/Cnct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Cntlr</servlet-name>
+        <url-pattern>/Cntlr</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LogB</servlet-name>
