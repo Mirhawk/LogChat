@@ -17,14 +17,19 @@
 <title>Chat Login</title>
 </head>
 <body>
+<table border="1" align="center">
+  <tr>
+    <td>UserName:</td>
+    <td><input type="text" name="un"></td>
+  </tr>
+  <tr>
+    <td>Password:</td>
+    <td><input type="password" name="pwd"></td>
+  </tr>
+</table>
+    
 <form action="Cntlr" method="get">
-		UserName: <input type="text" name="un"> <br>
-		Password:<input type="password" name="pwd"> <br>
-                <input type="submit" value="submit">
-                
-                
-                
-                
+    <input type="submit" value="submit">
 </form>
 </body>
 </html>
