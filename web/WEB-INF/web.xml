@@ -16,6 +16,7 @@
         <servlet-name>Reg</servlet-name>
         <servlet-class>Reg</servlet-class>
     </servlet>
+   
     <servlet-mapping>
         <servlet-name>Cnct</servlet-name>
         <url-pattern>/Cnct</url-pattern>
@@ -32,9 +33,13 @@
         <servlet-name>Reg</servlet-name>
         <url-pattern>/Reg</url-pattern>
     </servlet-mapping>
+   
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>faces/index.xhtml</welcome-file>
+    </welcome-file-list>
 </web-app>

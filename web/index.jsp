@@ -5,6 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="temp.MyServer" %>
+<% MyServer obj1 = new MyServer();
+%>
+
 <!DOCTYPE html>
 
 <html>
@@ -16,8 +20,11 @@
 <form action="Cntlr" method="get">
 		UserName: <input type="text" name="un"> <br>
 		Password:<input type="password" name="pwd"> <br>
+                <input type="submit" value="submit">
                 
-		<input type="submit" value="submit">
+                
+                
+                
 </form>
 </body>
 </html>
