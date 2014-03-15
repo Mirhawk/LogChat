@@ -56,8 +56,8 @@ public class Cntlr extends HttpServlet {
 		}
 		else
 		{
-			out.println("Enter the valid password");
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			out.print("<script language='JavaScript'>alert('Error! Invalid Username or password!');</script>");
+                        RequestDispatcher rd = request.getRequestDispatcher("index.html");
 			rd.include(request, response);
 		}
 		

@@ -21,6 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author Mirhawk
  */
 public class Reg extends HttpServlet {
+    
+        
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -72,6 +74,8 @@ public class Reg extends HttpServlet {
 		
 		out.println("<html> <body>");
 		Cnct cn = new Cnct();
+
+
 		
 		Connection con = cn.getConnection();
 		
@@ -83,7 +87,9 @@ public class Reg extends HttpServlet {
 		try {
 			    pstmt = con.prepareStatement(query);
                             ResultSet rs = pstmt.executeQuery();
-			    			 
+                            out.print("<script language='JavaScript'>alert('Registration Successfull!! Login using the username and password.');</script>");
+                            RequestDispatcher rd = request.getRequestDispatcher("index.html");
+                            rd.include(request, response);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

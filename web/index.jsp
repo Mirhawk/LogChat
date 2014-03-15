@@ -4,19 +4,22 @@
     Author     : Mirhawk
 --%>
 
+
+<%--  Remove error and activate this to run server
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="temp.MyServer" %>
 <% MyServer obj1 = new MyServer();
 %>
+--%>
 
 <!DOCTYPE html>
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Chat Login</title>
     </head>
     <body>
+        <form action="Cntlr" method="get">
         <table border="1" align="center">
             <tr>
                 <td>UserName:</td>
@@ -27,8 +30,9 @@
                 <td><input type="password" name="pwd"></td>
             </tr>
         </table>
-     <form action="Cntlr" method="get">
+     
             <input type="submit" value="submit">
         </form>
     </body>
 </html>
+  
