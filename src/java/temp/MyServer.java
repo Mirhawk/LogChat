@@ -46,10 +46,12 @@ public class MyServer{
 			t1.start();
 		}
 	}
+        
 	public static void main(String[] args){
 		try{
                     
 			new MyServer();			
+                      
 		}catch (IOException e){}
 
                 {

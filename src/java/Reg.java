@@ -74,9 +74,6 @@ public class Reg extends HttpServlet {
 		
 		out.println("<html> <body>");
 		Cnct cn = new Cnct();
-
-
-		
 		Connection con = cn.getConnection();
 		
 		String query = "insert into users values('" + name +"','"+password+"')";
