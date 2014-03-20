@@ -4,13 +4,13 @@
     Author     : Mirhawk
 --%>
 
-<%-- 
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="temp.MyServer" %>
 <% MyServer obj1 = new MyServer();
 %>
---%>
+
 
 
 <!DOCTYPE html>
@@ -46,12 +46,6 @@
                 
 </style>
 
-<script>
-public function scReg()
-{
-alert("Registration Successfull!");
-}
-</script>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
