@@ -22,14 +22,16 @@ public class Cnct {
 		
 		try {
 			
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			//Class.forName("oracle.jdbc.driver.OracleDriver");
+                    Class.forName("com.mysql.jdbc.Driver");
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
           try {
-			con =DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","mirhawk","apache");
+			//con =DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","mirhawk","apache");
+              con =DriverManager.getConnection("jdbc:mysql://localhost:3308/userdb","mirhawk","apache");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

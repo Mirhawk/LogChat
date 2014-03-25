@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -76,14 +77,16 @@ public class Reg extends HttpServlet {
 		Cnct cn = new Cnct();
 		Connection con = cn.getConnection();
 		
-		String query = "insert into users values('" + name +"','"+password+"')";
+		String query = "insert into users values('"+name+"','"+password+"')";
                 out.println("<br><br>");
-                              
+
 		
-		PreparedStatement pstmt;
+                Statement stmt;
 		try {
-			    pstmt = con.prepareStatement(query);
-                            ResultSet rs = pstmt.executeQuery();
+			   
+                            stmt = con.prepareStatement(query);
+                            ResultSet rs = stmt.getResultSet();
+                            stmt.executeUpdate(query);
                             out.print("<script language='JavaScript'>alert('Registration Successfull!! Login using the username and password.');</script>");
                             RequestDispatcher rd = request.getRequestDispatcher("index.html");
                             rd.include(request, response);

@@ -16,8 +16,11 @@
         <servlet-name>Reg</servlet-name>
         <servlet-class>Reg</servlet-class>
     </servlet>
-    
-    
+    <servlet>
+        <servlet-name>MyClient</servlet-name>
+        <servlet-class>temp.MyClient</servlet-class>
+    </servlet>
+   
     <servlet-mapping>
         <servlet-name>Cnct</servlet-name>
         <url-pattern>/Cnct</url-pattern>
@@ -34,13 +37,14 @@
         <servlet-name>Reg</servlet-name>
         <url-pattern>/Reg</url-pattern>
     </servlet-mapping>
-
-
-    
+    <servlet-mapping>
+        <servlet-name>MyClient</servlet-name>
+        <url-pattern>/MyClient</url-pattern>
+    </servlet-mapping>
+   
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    
 </web-app>
