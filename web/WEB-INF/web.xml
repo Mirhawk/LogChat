@@ -20,7 +20,6 @@
         <servlet-name>MyClient</servlet-name>
         <servlet-class>temp.MyClient</servlet-class>
     </servlet>
-   
     <servlet-mapping>
         <servlet-name>Cnct</servlet-name>
         <url-pattern>/Cnct</url-pattern>
@@ -41,7 +40,6 @@
         <servlet-name>MyClient</servlet-name>
         <url-pattern>/MyClient</url-pattern>
     </servlet-mapping>
-   
     <session-config>
         <session-timeout>
             30

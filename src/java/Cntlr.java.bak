@@ -11,10 +11,6 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,9 +35,60 @@ public class Cntlr extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.setContentType("text/html");
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		response.setContentType("text/html");
+//		PrintWriter out = response.getWriter();
+//		
+//		String name=request.getParameter("un");
+//		String password = request.getParameter("pwd");
+//		
+//		out.println("<html> <body>");
+//		
+//		LogB lb = new LogB();
+//                OnlineUsers ol= new OnlineUsers();
+//		lb.setName(name);
+//		lb.setPassword(password);
+//                ol.usol(name);
+//		
+//		boolean res = lb.validate();
+//		if(res)
+//		{
+//                     /*   
+//			out.print("<script language='JavaScript' type='text/javascript'>");
+//out.print("function addtext() {");
+//out.print("var newtext = '"+name+"'");
+//	out.print("document.myform.OnlineUsers.value += newtext;");
+//	out.print("}");
+//	out.print("document.myform.outputtext.value += newtext;");
+//out.print("}");
+//out.print("</script>");*/
+//			RequestDispatcher rd = request.getRequestDispatcher("chat.jsp");
+//                        rd.forward(request, response);
+//                        
+//		}
+//		else
+//		{
+//			out.print("<script language='JavaScript'>alert('Error! Invalid Username or password!');</script>");
+//                        RequestDispatcher rd = request.getRequestDispatcher("index.html");
+//			rd.include(request, response);
+//                      
+//
+//		}
+//		
+//		out.println("</body></html>");
+//		
+//		
+//	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+        @Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+            // TODO Auto-generated method stub
+        	response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
 		String name=request.getParameter("un");
@@ -50,15 +97,24 @@ public class Cntlr extends HttpServlet {
 		out.println("<html> <body>");
 		
 		LogB lb = new LogB();
-                //OnlineUsers ol= new OnlineUsers();
+//                OnlineUsers ol= new OnlineUsers();
 		lb.setName(name);
 		lb.setPassword(password);
-               // ol.usol(name);
+  //              ol.usol(name);
 		
 		boolean res = lb.validate();
 		if(res)
 		{
-                     
+                     /*   
+			out.print("<script language='JavaScript' type='text/javascript'>");
+out.print("function addtext() {");
+out.print("var newtext = '"+name+"'");
+	out.print("document.myform.OnlineUsers.value += newtext;");
+	out.print("}");
+	out.print("document.myform.outputtext.value += newtext;");
+out.print("}");
+                    out.println("<textarea value="+un+">");
+out.print("</script>");*/
 			RequestDispatcher rd = request.getRequestDispatcher("chat.jsp");
                         rd.forward(request, response);
                         
@@ -75,60 +131,8 @@ public class Cntlr extends HttpServlet {
 		out.println("</body></html>");
 		
 		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-        @Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-            // TODO Auto-generated method stub
-        	response.setContentType("text/html");
-		/*PrintWriter out = response.getWriter();
-		
-		String name=request.getParameter("un");
-		String password = request.getParameter("pwd");
-		
-		out.println("<html> <body>");
-		
-		LogB lb = new LogB();
-//                OnlineUsers ol= new OnlineUsers();
-		lb.setName(name);
-		lb.setPassword(password);
-  //              ol.usol(name);
-		
-		boolean res = lb.validate();
-		if(res)
-		{*/
-                     /*   
-			out.print("<script language='JavaScript' type='text/javascript'>");
-out.print("function addtext() {");
-out.print("var newtext = '"+name+"'");
-	out.print("document.myform.OnlineUsers.value += newtext;");
-	out.print("}");
-	out.print("document.myform.outputtext.value += newtext;");
-out.print("}");
-                    out.println("<textarea value="+un+">");
-out.print("</script>");*/
-	/*		RequestDispatcher rd = request.getRequestDispatcher("chat.jsp");
-                        rd.forward(request, response);
-                        
-		}
-		else
-		{
-			out.print("<script language='JavaScript'>alert('Error! Invalid Username or password!');</script>");
-                        RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			rd.include(request, response);
-                      
-
-		}
-		
-		out.println("</body></html>");
-		
-		
-	
-         */   
+            
 	}
         
 

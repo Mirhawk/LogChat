@@ -7,9 +7,10 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="temp.MyServer" %>
+
+<%--<%@ page import="temp.MyServer" %>
 <% MyServer obj1 = new MyServer();
-%>
+%>--%>
 
 
 
@@ -43,6 +44,10 @@
                 width:100px;
                 height:30px;
                 }
+         .backimage{
+                background: url(images/back.png);
+                    
+                }
                 
 </style>
 
@@ -53,10 +58,10 @@
 <title>Chat Login</title>
 </head>
 
-<body class="back">
+<body background="images/back.png">
     <!-- For New User -->
     <div align="right">
-    <a href="Register.html"><strong>New User? Register!</strong></a>
+    <a href="Register.jsp"><strong>New User? Register!</strong></a>
     </div>
     <br><br><br><br><br><br><br><br><br><br>
     <div>
