@@ -1,3 +1,5 @@
+package base;
+
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,6 +26,8 @@ public class LogB {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+        
+        
 	
 	//method to check for valid user
 	public boolean validate()

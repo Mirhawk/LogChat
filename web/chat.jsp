@@ -5,6 +5,8 @@
 <%@page import="java.sql.Connection"%>
 
 
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -35,19 +37,41 @@
     right: 18em;
 }
 </style>
+
+<script type="text/javascript"       src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+var auto_refresh = setInterval(
+function () {
+    //jQuery.removeData();
+    var divClone = $("#getdata").clone(); 
+    //$("#getdata").html(chat.jsp)
+    $('#getdata').load('chat.jsp');
+    element.style.display = 'none';
+    element.style.display = 'block';
+    $("#getdata").replaceWith(divClone);
+    
+    }, 1000);
+    </script>
+
 </head>
 
 <body>
 
  <br>
      <span class="tab">Chat Window</span> <span class="tab1">Online Users</span><br>
+         <div id="getdata">
          <textarea name="ChatWindow" readonly="readonly" class="ChatWindowCSS" id="ChatWindow">
-<% 
+<%     //Code for refreshing page
+   // response.setHeader("Refresh","10");
 ////Code For Chatting Window
+    
 String csend;
 String cchat;
 String crec;
-String name=request.getParameter("un");
+String name=LogB.getName();
+
     Connection ccon =null;
     try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -72,6 +96,7 @@ String name=request.getParameter("un");
                     csend = rs.getString("sender");
                     cchat = rs.getString("chatdata");
                     crec = rs.getString("recv");
+                    out.println();
                     if(csend.equals(name))
                     {
                         out.print("Me");
@@ -133,14 +158,17 @@ String name=request.getParameter("un");
 
 %>
   </textarea>
-    
+         </div>
   <br><br>
     <label for="ChatMessage"></label>
-    <textarea name="ChatMessage" class="ChatMsgCSS" id="ChatMessage"></textarea>
+    <textarea name="ChatMessage" class="ChatMsgCSS" id="ChatMessage" value="ChatMessage"></textarea>
   
   <br><br>
-          //sql = "Select sum(amt) as tot From trig where dt >= '" & dtm & "' AND Trans LIKE 'withdraw'"
+          <!--This is comment//sql = "Select sum(amt) as tot From trig where dt >= '" & dtm & "' AND Trans LIKE 'withdraw'"-->
+         <form action="ChatSend"  method="get"> 
+       
     <input type="submit" name="send" id="send" value="Send" />
+              </form>
     <input type="submit" name="logout" id="logout" value="Logout"/>
   
 

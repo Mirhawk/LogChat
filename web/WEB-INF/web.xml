@@ -2,23 +2,31 @@
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <servlet>
         <servlet-name>Cnct</servlet-name>
-        <servlet-class>Cnct</servlet-class>
+        <servlet-class>base.Cnct</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Cntlr</servlet-name>
-        <servlet-class>Cntlr</servlet-class>
+        <servlet-class>base.Cntlr</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LogB</servlet-name>
-        <servlet-class>LogB</servlet-class>
+        <servlet-class>base.LogB</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Reg</servlet-name>
-        <servlet-class>Reg</servlet-class>
+        <servlet-class>base.Reg</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MyClient</servlet-name>
         <servlet-class>temp.MyClient</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChatSend</servlet-name>
+        <servlet-class>base.ChatSend</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChatMessageInsert</servlet-name>
+        <servlet-class>base.ChatMessageInsert</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Cnct</servlet-name>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>MyClient</servlet-name>
         <url-pattern>/MyClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChatSend</servlet-name>
+        <url-pattern>/ChatSend</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChatMessageInsert</servlet-name>
+        <url-pattern>/ChatMessageInsert</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
