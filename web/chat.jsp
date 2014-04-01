@@ -36,6 +36,9 @@
         color:goldenrod;
         font-weight: bolder;
         font-size: large;
+        position: absolute;
+        right:15em;
+        text-align: center;
 }
 
 .ChatMsgCSS {
@@ -46,21 +49,19 @@
 }
 .tab{
     position: absolute;
-    left: 5em;
-    background: rgba(255,255,255,0.2);
+    left: 20em;
+    background: rgba(255,255,255,0);
+    font-size: x-large;
 }
 .tab1{
     position: absolute;
-    right:18em;
-    background: rgba(255,255,255,0.2);
+    right:12em;
+    background: rgba(255,255,255,0);
+    font-size: x-large
 }
-    .backgr {
-                background-image: url(images/chat_back.jpg);
-                }
-                
-                
-                     
-
+.backgr {
+         background-image: url(images/chat_back.jpg);
+        }
 </style>
 <!--
 <script type="text/javascript"       src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
@@ -85,17 +86,16 @@ function () {
 <body class="backgr">
     <!--Online User Name-->
     <div style="float: right;"><font size="5" color="green"><b>Hello <%String name=request.getParameter("uname"); out.print(name);%>!</font></b></div><br><br>
-        
-        
+               
                                             <!--Logout Button-->
         <form action="LogoutServlet"  method="get"> 
     <%session.setAttribute("delname", name);%>
-    <input type="submit" style="float: right;" name="logout" id="logout" value="Logout"/><br><br><br><br>
+    <input type="submit" style="float: right;" name="logout" id="logout" value="Logout"/><br><br>
         </form>
     
                                             <!--Main Page Coding-->
     
-<span class="tab"><font color="gold"><b>Chat Window</b></font></span> <span class="tab1"><font color="gold"><b>Online Users</b></font></span><br>
+<span class="tab"><font color="gold"><b>Chat Window</b></font></span> <span class="tab1"><font color="gold"><b>Online Users</b></font></span><br><br>
     <div id="getdata">
     <textarea name="ChatWindow" readonly="readonly" class="ChatWindowCSS" id="ChatWindow">
 
