@@ -22,34 +22,34 @@
         resize: none;
 	height: 450px;
 	width: 1200px;
-        background: rgba(255,255,255,0.5);
+        background: rgba(255,255,255,0.2);
 }
 
 .OnlineUsersCSS {
         resize: none;
 	height: 450px;
 	width: 200px;
-        background: rgba(255,255,255,0.5);
+        background: rgba(255,255,255,0.2);
 }
 
 .ChatMsgCSS {
         resize: none;
 	height: 100px;
 	width: 1200px;
-        background: rgba(255,255,255,0.5);
+        background: rgba(255,255,255,0.2);
 }
 .tab{
     position: absolute;
     left: 5em;
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.2);
 }
 .tab1{
     position: absolute;
     right:18em;
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.2);
 }
     .backgr {
-                background-image: url(images/chat_backnew.jpg);
+                background-image: url(images/link.jpg);
                 }
                      
 
@@ -77,10 +77,10 @@ function () {
 <body class="backgr">
     
     <div style="float: right;"><font size="5" color="green"><b>Hello <%String name=request.getParameter("uname"); out.print(name);%>!</font></b></div><br><br>
-        
-    
+        <form action="LogoutServlet"  method="get"> 
+    <%session.setAttribute("delname", name);%>
     <input type="submit" style="float: right;" name="logout" id="logout" value="Logout"/><br><br><br><br>
-                    
+                    </form>
              <span class="tab"><b>Chat Window</b></span> <span class="tab1"><b>Online Users</b></span><br>
          <div id="getdata">
          <textarea name="ChatWindow" readonly="readonly" class="ChatWindowCSS" id="ChatWindow">
@@ -187,13 +187,7 @@ String crec;
          </div>
   <br><br>
           <form action="ChatSend?"  method="get"> 
-              <%session.setAttribute("uname", name);
-              /*  RequestDispatcher dispatcher = request.getRequestDispatcher(ChatSend);
-            if (dispatcher != null){
-            dispatcher.forward(request, response);
-            } */
-              
-              %>
+              <%session.setAttribute("uname", name);%>
               
     <textarea name="ChatMe" class="ChatMsgCSS" id="ChatMessage" value="ChatMessage"></textarea>
   
