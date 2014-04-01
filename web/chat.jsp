@@ -23,6 +23,9 @@
 	height: 450px;
 	width: 1200px;
         background: rgba(255,255,255,0.2);
+        color:gold;
+        font-weight: bolder;
+        font-size: large;
 }
 
 .OnlineUsersCSS {
@@ -30,6 +33,9 @@
 	height: 450px;
 	width: 200px;
         background: rgba(255,255,255,0.2);
+        color:goldenrod;
+        font-weight: bolder;
+        font-size: large;
 }
 
 .ChatMsgCSS {
@@ -51,6 +57,8 @@
     .backgr {
                 background-image: url(images/link.jpg);
                 }
+                
+                
                      
 
 </style>
@@ -81,7 +89,7 @@ function () {
     <%session.setAttribute("delname", name);%>
     <input type="submit" style="float: right;" name="logout" id="logout" value="Logout"/><br><br><br><br>
                     </form>
-             <span class="tab"><b>Chat Window</b></span> <span class="tab1"><b>Online Users</b></span><br>
+             <span class="tab"><font color="gold"><b>Chat Window</b></font></span> <span class="tab1"><font color="gold"><b>Online Users</b></font></span><br>
          <div id="getdata">
          <textarea name="ChatWindow" readonly="readonly" class="ChatWindowCSS" id="ChatWindow">
 <%     //Code for refreshing page
@@ -91,11 +99,6 @@ function () {
 String csend;
 String cchat;
 String crec;
-
-//Cntlr cnt =new Cntlr();
-//name=cnt.SendName();
-
-
 
     Connection ccon =null;
     try {
