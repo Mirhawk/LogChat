@@ -18,7 +18,7 @@ and open the template in the editor.
         .txtcss {
                 border :0 px;
                 }   
-       .tab    {
+        .tab    {
                 background-image: url(images/tabback.jpg);
                 width: 390px;
                 height: 100px;
@@ -28,7 +28,7 @@ and open the template in the editor.
                 border: 2px;
                 color: white;
                 }
-       .btntab {
+        .btntab {
                 width: 400px;
                 height: 100px;
                 margin-left:auto;
@@ -45,29 +45,27 @@ and open the template in the editor.
                 font-weight: bold;
                 font-size: large;                
                 }
-                
         .txtstyle{
                 width: 320px;
                 height: 25px;
                 background: rgba(255,255,255,0.18);
                 border: 0 px ;
                 }
-                
 </style>
+
         <title>Registration</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-  </head>
+</head>
   
-  <body class="back">
+<body class="back">
 <br>
- <div id="headingDIV"><h1 align='center'><font size='16' color='darkgray'><i>Register </i></font></h1></div>
+<div id="headingDIV"><h1 align='center'><font size='16' color='darkgray'><i>Register </i></font></h1></div>
 
+    <br><br><br><br><br><br><br><br><br>
+                                                        <!-- Table for Register -->        
+<table class="tab" border="4" >
     
-        <br><br><br><br><br><br><br><br><br>
-<!-- Table for Register -->        
-        <table class="tab" border="4" >
-
     <tr>
         <td align="center"><font size="5"><i><b>Name:</b></i></font></td>
         <td><input type="text" name="name" class="txtstyle"></td>c
@@ -82,26 +80,24 @@ and open the template in the editor.
         <td align="center"><font size="5"><i><b>Password:</b></i></font></td>
         <td><input type="password" name="pswd" class="txtstyle"></td>
     </tr>
-<form action="Reg" method="get">
+    
+    <form action="Reg" method="get">
     <tr>
         <td align="center"><font size="5"><i><b>Email id:</b></i></font></td>
         <td><input  type="text" name="eid" class="txtstyle"></td>
     </tr>
-   
-    
-
 </table>
 
-<br>  
+    <br>  
 
-
-<!-- Table for alligning buttons-->
-
+                                            <!-- Table for alligning buttons-->
 
 <table align="center">
+    
     <tr>
-            <td width="210" align ="center"> <input type="submit" class="btnsize" value="Submit" ></td>
+        <td width="210" align ="center"> <input type="submit" class="btnsize" value="Submit" ></td>
     </tr>
+    
 </table>
     </form>  
 

@@ -38,18 +38,18 @@ public class ChatSend extends HttpServlet {
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-                //change from here
+
                 
                 String name=(request.getSession().getAttribute("uname")).toString();
 		String ChatM = request.getParameter("ChatMe");
 		out.println("<html> <body>");
 		
-		//change till here
-                /*8ChatMessageInsert cm=new ChatMessageInsert();
+		//change from here to call java code
+                /*ChatMessageInsert cm=new ChatMessageInsert();
                 cm.setValues(name,ChatM);
                 cm.chatins();*/
+                //Change till here for call
                 
-                //New code from here
                 Cnct cn = new Cnct();
 		Connection con = cn.getConnection();
                 String query;
@@ -63,14 +63,9 @@ public class ChatSend extends HttpServlet {
                                         e.printStackTrace();
                                         }
       	
-                
-                //new code ends here
-                //RequestDispatcher rd = request.getRequestDispatcher("chat.jsp?name="+name+"");
                 response.sendRedirect("chat.jsp?uname="+name+"");
-                //rd.forward(request, response);
                 out.println("</body></html>");
-         
-                }
+        }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -79,8 +74,5 @@ public class ChatSend extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
             // TODO Auto-generated method stub
-               
-	}
-        
-
+        }
 }

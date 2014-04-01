@@ -49,29 +49,27 @@ public class LogB {
                                     dbUsername = rs.getString("usn");
                                     dbPassword = rs.getString("password");
                                     if(dbUsername.equals(name) && dbPassword.equals(password)){
-                                                                                                result = true;
-                                                                                                Cnct ccn = new Cnct();
-		Connection ccon = ccn.getConnection();
-                String cquery;
-                try {        
-                    Statement cstmt = (Statement) ccon.createStatement();
-                    cquery = "insert into useronline values('"+name+"')";
-                    cstmt.executeUpdate(cquery);
-                    }
-                catch (SQLException e) {
-                                	// TODO Auto-generated catch block
-                                        e.printStackTrace();
-                                        }
-                                                                                                return result;
-                                                                                              }
+                                                       result = true;
+                                                       Cnct ccn = new Cnct();
+                                                       Connection ccon = ccn.getConnection();
+                                                       String cquery;
+                                                       try {        
+                                                            Statement cstmt = (Statement) ccon.createStatement();
+                                                            cquery = "insert into useronline values('"+name+"')";
+                                                            cstmt.executeUpdate(cquery);
+                                                            }
+                                                       catch (SQLException e) {
+                                                                               // TODO Auto-generated catch block
+                                                                               e.printStackTrace();
+                                                                              }
+                                                        return result;
+                                                        }
                                     }
                     }
                 catch (SQLException e) {
                                 	// TODO Auto-generated catch block
                                         e.printStackTrace();
                                         }
-      	return result;
+                return result;
         }
 }
-
-    

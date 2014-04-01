@@ -9,7 +9,6 @@ package base;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -85,8 +84,7 @@ public class Reg extends HttpServlet {
 		
                 Statement stmt;
 		try {
-			   
-                            stmt = con.prepareStatement(query);
+		            stmt = con.prepareStatement(query);
                             ResultSet rs = stmt.getResultSet();
                             stmt.executeUpdate(query);
                             out.print("<script language='JavaScript'>alert('Registration Successfull!! Login using the username and password.');</script>");
@@ -96,12 +94,8 @@ public class Reg extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-	
 		out.println("</body></html>");
-		
-        
-    }
+}
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -126,5 +120,4 @@ public class Reg extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

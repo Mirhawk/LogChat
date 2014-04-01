@@ -17,28 +17,26 @@ import java.sql.SQLException;
 import sun.jdbc.odbc.OdbcDef;
 
 public class Cnct {
-	
-	public Connection getConnection()
-	{
-		Connection con=null;
-		
-		try {
-			
-			//Class.forName("oracle.jdbc.driver.OracleDriver");
-                    Class.forName("com.mysql.jdbc.Driver");
-			
-		} catch (ClassNotFoundException e) {
+                  public Connection getConnection()
+                  {
+		  Connection con=null;
+		  try   {
+                        //Class.forName("oracle.jdbc.driver.OracleDriver");
+                        Class.forName("com.mysql.jdbc.Driver");
+                        }
+                  catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-          try {
+                        }
+                    try {
 			//con =DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","mirhawk","apache");
-              con =DriverManager.getConnection("jdbc:mysql://localhost:3308/userdb","mirhawk","apache");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
+                        con =DriverManager.getConnection("jdbc:mysql://localhost:3308/userdb","mirhawk","apache");
+                        }
+                    catch (SQLException e) {
+                                            // TODO Auto-generated catch block
+                                            e.printStackTrace();
+                                            }		
 		
-		return con;
-	}	
+                    return con;
+                    }	
 }

@@ -38,7 +38,6 @@ public class LogoutServlet extends HttpServlet {
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-                //change from here
                 
                 String name=(request.getSession().getAttribute("delname")).toString();
 		out.println("<html> <body>");
@@ -55,14 +54,13 @@ public class LogoutServlet extends HttpServlet {
                                 	// TODO Auto-generated catch block
                                         e.printStackTrace();
                                         }
+                
                 out.print("<script language='JavaScript'>alert('You have logged out!');</script>");
-                //response.sendRedirect("index.jsp");
-                 RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			rd.include(request, response);
+                
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+		rd.include(request, response);
                 out.println("</body></html>");
-         
                 }
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -70,8 +68,5 @@ public class LogoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
             // TODO Auto-generated method stub
-               
 	}
-        
-
 }
