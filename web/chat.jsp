@@ -3,8 +3,13 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="base.Cntlr"%>
+<%@page import="base.LogB"%>
 
 
+
+
+<!-- All css for design -->
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -15,29 +20,41 @@
 <style type="text/css">
 .ChatWindowCSS {
         resize: none;
-	height: 400px;
-	width: 800px;
+	height: 450px;
+	width: 1200px;
+        background: rgba(255,255,255,0.5);
 }
-.ChatMsgCSS {
-        resize: none;
-	height: 80px;
-	width: 500px;
-}
+
 .OnlineUsersCSS {
         resize: none;
-	height: 400px;
+	height: 450px;
 	width: 200px;
+        background: rgba(255,255,255,0.5);
+}
+
+.ChatMsgCSS {
+        resize: none;
+	height: 100px;
+	width: 1200px;
+        background: rgba(255,255,255,0.5);
 }
 .tab{
     position: absolute;
     left: 5em;
+    background: rgba(255,255,255,0.5);
 }
 .tab1{
     position: absolute;
-    right: 18em;
+    right:18em;
+    background: rgba(255,255,255,0.5);
 }
-</style>
+    .backgr {
+                background-image: url(images/chat_backnew.jpg);
+                }
+                     
 
+</style>
+<!--
 <script type="text/javascript"       src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
 
 <script type="text/javascript">
@@ -53,24 +70,32 @@ function () {
     $("#getdata").replaceWith(divClone);
     
     }, 1000);
-    </script>
+    </script>-->
 
 </head>
 
-<body>
-
- <br>
-     <span class="tab">Chat Window</span> <span class="tab1">Online Users</span><br>
+<body class="backgr">
+    
+    <div style="float: right;"><font size="5" color="green"><b>Hello <%String name=request.getParameter("uname"); out.print(name);%>!</font></b></div><br><br>
+        
+    
+    <input type="submit" style="float: right;" name="logout" id="logout" value="Logout"/><br><br><br><br>
+                    
+             <span class="tab"><b>Chat Window</b></span> <span class="tab1"><b>Online Users</b></span><br>
          <div id="getdata">
          <textarea name="ChatWindow" readonly="readonly" class="ChatWindowCSS" id="ChatWindow">
 <%     //Code for refreshing page
-   // response.setHeader("Refresh","10");
+    response.setHeader("Refresh","10");
 ////Code For Chatting Window
     
 String csend;
 String cchat;
 String crec;
-String name=LogB.getName();
+
+//Cntlr cnt =new Cntlr();
+//name=cnt.SendName();
+
+
 
     Connection ccon =null;
     try {
@@ -98,9 +123,9 @@ String name=LogB.getName();
                     crec = rs.getString("recv");
                     out.println();
                     if(csend.equals(name))
-                    {
+                        {
                         out.print("Me");
-                    }
+                        }
                     else
                     {
                         out.print(csend);
@@ -117,7 +142,7 @@ String name=LogB.getName();
 
 %>
       
-         </textarea>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         </textarea>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <textarea name="OnlineUsers" readonly="readonly" class="OnlineUsersCSS" id="OnlineUsers">
 
 <% 
@@ -155,21 +180,30 @@ String name=LogB.getName();
                                 	// TODO Auto-generated catch block
                                         e.printStackTrace();
                                         }    
+                
 
 %>
   </textarea>
          </div>
   <br><br>
-    <label for="ChatMessage"></label>
-    <textarea name="ChatMessage" class="ChatMsgCSS" id="ChatMessage" value="ChatMessage"></textarea>
+          <form action="ChatSend?"  method="get"> 
+              <%session.setAttribute("uname", name);
+              /*  RequestDispatcher dispatcher = request.getRequestDispatcher(ChatSend);
+            if (dispatcher != null){
+            dispatcher.forward(request, response);
+            } */
+              
+              %>
+              
+    <textarea name="ChatMe" class="ChatMsgCSS" id="ChatMessage" value="ChatMessage"></textarea>
   
   <br><br>
           <!--This is comment//sql = "Select sum(amt) as tot From trig where dt >= '" & dtm & "' AND Trans LIKE 'withdraw'"-->
-         <form action="ChatSend"  method="get"> 
+          
        
     <input type="submit" name="send" id="send" value="Send" />
-              </form>
-    <input type="submit" name="logout" id="logout" value="Logout"/>
+          </form>
+    
   
 
 

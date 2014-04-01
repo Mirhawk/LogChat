@@ -37,7 +37,40 @@ public class ChatSend extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		doPost(request,response);
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+                //change from here
+                
+                String name=(request.getSession().getAttribute("uname")).toString();
+		String ChatM = request.getParameter("ChatMe");
+		out.println("<html> <body>");
+		
+		//change till here
+                /*8ChatMessageInsert cm=new ChatMessageInsert();
+                cm.setValues(name,ChatM);
+                cm.chatins();*/
+                
+                //New code from here
+                Cnct cn = new Cnct();
+		Connection con = cn.getConnection();
+                String query;
+                try {        
+                    Statement stmt = (Statement) con.createStatement();
+                    query = "insert into userchat values('"+name+"','"+ChatM+"','all')";
+                    stmt.executeUpdate(query);
+                    }
+                catch (SQLException e) {
+                                	// TODO Auto-generated catch block
+                                        e.printStackTrace();
+                                        }
+      	
+                
+                //new code ends here
+                //RequestDispatcher rd = request.getRequestDispatcher("chat.jsp?name="+name+"");
+                response.sendRedirect("chat.jsp?uname="+name+"");
+                //rd.forward(request, response);
+                out.println("</body></html>");
+         
                 }
 
 	/**
@@ -47,19 +80,7 @@ public class ChatSend extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
             // TODO Auto-generated method stub
-        	response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-                LogB lb =new LogB();
-                out.println("<html> <body>");
-		String ChatMessage1=request.getParameter("ChatMessage");
-		String name=lb.getName();
-                ChatMessageInsert cm=new ChatMessageInsert();
-                cm.setValues(name,ChatMessage1);
-                cm.chatins();
-                //RequestDispatcher rd = request.getRequestDispatcher("chat.jsp");
-                response.sendRedirect("chat.jsp");
-                //rd.forward(request, response);
-                
+               
 	}
         
 

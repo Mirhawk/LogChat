@@ -14,11 +14,12 @@ public class LogB {
         private String dbPassword;
     
         
-	public String getName() {
-		return name;
-	}
+	
 	public void setName(String name) {
 		this.name = name;
+	}
+        public String getName() {
+		return name;
 	}
 	public String getPassword() {
 		return password;
@@ -27,6 +28,9 @@ public class LogB {
 		this.password = password;
 	}
         
+        public String SendName() {
+		return this.name;
+	}
         
 	
 	//method to check for valid user

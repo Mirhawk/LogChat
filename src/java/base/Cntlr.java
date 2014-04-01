@@ -30,6 +30,8 @@ import temp.MyClient;
  */
 public class Cntlr extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+        public String name;
+        public String password;
 
     /**
      * Default constructor. 
@@ -46,22 +48,18 @@ public class Cntlr extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
-		String name=request.getParameter("un");
-		String password = request.getParameter("pwd");
-		
+		name=request.getParameter("un");
+		password = request.getParameter("pwd");
 		out.println("<html> <body>");
 		
 		LogB lb = new LogB();
-                //OnlineUsers ol= new OnlineUsers();
-		lb.setName(name);
+                lb.setName(name);
 		lb.setPassword(password);
-               // ol.usol(name);
-		
-		boolean res = lb.validate();
+               	boolean res = lb.validate();
 		if(res)
 		{
-                     
-			RequestDispatcher rd = request.getRequestDispatcher("chat.jsp");
+                     //request.setAttribute("uname",name);
+			RequestDispatcher rd = request.getRequestDispatcher("chat.jsp?uname="+name+"");
                         rd.forward(request, response);
                         
 		}
@@ -77,6 +75,9 @@ public class Cntlr extends HttpServlet {
 		out.println("</body></html>");
 		
 		
+	}
+        public String SendName() {
+		return name;
 	}
 
 	/**
