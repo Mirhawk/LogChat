@@ -55,7 +55,7 @@
     background: rgba(255,255,255,0.2);
 }
     .backgr {
-                background-image: url(images/link.jpg);
+                background-image: url(images/chat_back.jpg);
                 }
                 
                 
@@ -83,18 +83,28 @@ function () {
 </head>
 
 <body class="backgr">
-    
+    <!--Online User Name-->
     <div style="float: right;"><font size="5" color="green"><b>Hello <%String name=request.getParameter("uname"); out.print(name);%>!</font></b></div><br><br>
+        
+        
+                                            <!--Logout Button-->
         <form action="LogoutServlet"  method="get"> 
     <%session.setAttribute("delname", name);%>
     <input type="submit" style="float: right;" name="logout" id="logout" value="Logout"/><br><br><br><br>
-                    </form>
-             <span class="tab"><font color="gold"><b>Chat Window</b></font></span> <span class="tab1"><font color="gold"><b>Online Users</b></font></span><br>
-         <div id="getdata">
-         <textarea name="ChatWindow" readonly="readonly" class="ChatWindowCSS" id="ChatWindow">
-<%     //Code for refreshing page
-    response.setHeader("Refresh","10");
-////Code For Chatting Window
+        </form>
+    
+                                            <!--Main Page Coding-->
+    
+<span class="tab"><font color="gold"><b>Chat Window</b></font></span> <span class="tab1"><font color="gold"><b>Online Users</b></font></span><br>
+    <div id="getdata">
+    <textarea name="ChatWindow" readonly="readonly" class="ChatWindowCSS" id="ChatWindow">
+
+
+<%                                           //Code for refreshing page
+    response.setHeader("Refresh","10");%>
+
+
+<%                                          //Code For Chatting Window
     
 String csend;
 String cchat;
@@ -107,102 +117,99 @@ String crec;
     catch (ClassNotFoundException e) {
             	e.printStackTrace();
 		}
-          try {
-              ccon =DriverManager.getConnection("jdbc:mysql://localhost:3308/userdb","mirhawk","apache");
-		} 
-          catch (SQLException e) {
-		e.printStackTrace();
-		}		
+    try {
+        ccon =DriverManager.getConnection("jdbc:mysql://localhost:3308/userdb","mirhawk","apache");
+	} 
+    catch (SQLException e) {
+           		   e.printStackTrace();
+                           }		
     
-	       String cquery;
-                try {        
-                    Statement cstmt = (Statement) ccon.createStatement();
-                    cquery = "SELECT * from userchat";
-                    cstmt.executeQuery(cquery);
-                    ResultSet rs = cstmt.getResultSet();
-                    while(rs.next()){
-                    csend = rs.getString("sender");
-                    cchat = rs.getString("chatdata");
-                    crec = rs.getString("recv");
-                    out.println();
-                    if(csend.equals(name))
-                        {
-                        out.print("Me");
+    String cquery;
+    try {        
+         Statement cstmt = (Statement) ccon.createStatement();
+         cquery = "SELECT * from userchat";
+         cstmt.executeQuery(cquery);
+         ResultSet rs = cstmt.getResultSet();
+         while(rs.next()){
+         csend = rs.getString("sender");
+         cchat = rs.getString("chatdata");
+         crec = rs.getString("recv");
+         out.println();
+         if(csend.equals(name))
+                              {
+                              out.print("Me");
+                              }
+         else
+             {
+             out.print(csend);
+             }
+         out.print(":");
+         out.print(cchat);
                         }
-                    else
-                    {
-                        out.print(csend);
-                    }
-                    
-                    out.print(":");
-                    out.print(cchat);
-                                    }
-                    }
-                catch (SQLException e) {
-                                	// TODO Auto-generated catch block
-                                        e.printStackTrace();
-                                        }    
-
+         }
+    catch (SQLException e) {
+                           // TODO Auto-generated catch block
+                           e.printStackTrace();
+                           }    
 %>
-      
          </textarea>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         
+         
+                                                <!--Online User List-->
   <textarea name="OnlineUsers" readonly="readonly" class="OnlineUsersCSS" id="OnlineUsers">
 
-<% 
-////Code For Online users
+<%                                              ////Code For Online users
     String dbUsername;
     Connection con =null;
     try {
-			Class.forName("com.mysql.jdbc.Driver");
+	Class.forName("com.mysql.jdbc.Driver");
 	} 
     catch (ClassNotFoundException e) {
-            	e.printStackTrace();
-		}
-          try {
-              con =DriverManager.getConnection("jdbc:mysql://localhost:3308/userdb","mirhawk","apache");
-		} 
-          catch (SQLException e) {
-		e.printStackTrace();
-		}		
+                                	e.printStackTrace();
+                                     }
     
-	       String query;
-                try {        
-                    Statement stmt = (Statement) con.createStatement();
-                    query = "SELECT * from useronline";
-                    stmt.executeQuery(query);
-                    ResultSet rs = stmt.getResultSet();
-                    while(rs.next()){
-                    dbUsername = rs.getString("usronline");
-                    if(!dbUsername.equals(name))
-                    {
-                    out.println(dbUsername);
-                    }
-                                    }
-                    }
-                catch (SQLException e) {
-                                	// TODO Auto-generated catch block
-                                        e.printStackTrace();
-                                        }    
-                
-
+    try {
+        con =DriverManager.getConnection("jdbc:mysql://localhost:3308/userdb","mirhawk","apache");
+        } 
+    catch (SQLException e) {
+                           e.printStackTrace();
+                           }		
+    
+    String query;
+    try {        
+        Statement stmt = (Statement) con.createStatement();
+        query = "SELECT * from useronline";
+        stmt.executeQuery(query);
+        ResultSet rs = stmt.getResultSet();
+        while(rs.next()){
+                        dbUsername = rs.getString("usronline");
+                        if(!dbUsername.equals(name))
+                                                    {
+                                                    out.println(dbUsername);
+                                                    }
+                        }
+        }
+        catch (SQLException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                                }    
 %>
   </textarea>
-         </div>
-  <br><br>
-          <form action="ChatSend?"  method="get"> 
-              <%session.setAttribute("uname", name);%>
+  </div>
+  
+    
+<br><br>
+                                            <!--Sending Chat for database-->
+<form action="ChatSend?"  method="get"> 
+    
+<%                                          //Sending name of online user
+    session.setAttribute("uname", name);%>
               
     <textarea name="ChatMe" class="ChatMsgCSS" id="ChatMessage" value="ChatMessage"></textarea>
-  
-  <br><br>
-          <!--This is comment//sql = "Select sum(amt) as tot From trig where dt >= '" & dtm & "' AND Trans LIKE 'withdraw'"-->
-          
-       
+    <br><br>
+    <!--This is comment//sql = "Select sum(amt) as tot From trig where dt >= '" & dtm & "' AND Trans LIKE 'withdraw'"-->
     <input type="submit" name="send" id="send" value="Send" />
-          </form>
-    
-  
-
+</form>
 
 </body>
 </html>
