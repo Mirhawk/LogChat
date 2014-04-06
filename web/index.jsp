@@ -100,6 +100,11 @@ window.onload = function() {
                 background: rgba(255,255,255,0.18);
                 border: 0 px ;
                 }
+        .foot{
+                color:whitesmoke;
+                text-align: center;
+                margin-top: 27em;
+                }
                      
 </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -150,6 +155,10 @@ window.onload = function() {
     
 </table>
 </form>  
+
+
+                                                    <!-- Footer Notice-->
+    <div class="foot">This site is best viewed in Google Chrome and at 1920x1080 resolution. This website requires Java Script Enabled.</div>
 
 </body>
 </html>

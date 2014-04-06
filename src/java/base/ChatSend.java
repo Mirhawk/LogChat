@@ -11,14 +11,9 @@ package base;
  * @author Mirhawk
  */
 
+import dbsrv.ChatMessageInsert;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,26 +37,13 @@ public class ChatSend extends HttpServlet {
                 
                 String name=(request.getSession().getAttribute("uname")).toString();
 		String ChatM = request.getParameter("ChatMe");
+                String CurrentDate=request.getParameter("showdate");
 		out.println("<html> <body>");
 		
-		//change from here to call java code
-                /*ChatMessageInsert cm=new ChatMessageInsert();
-                cm.setValues(name,ChatM);
-                cm.chatins();*/
-                //Change till here for call
-                
-                Cnct cn = new Cnct();
-		Connection con = cn.getConnection();
-                String query;
-                try {        
-                    Statement stmt = (Statement) con.createStatement();
-                    query = "insert into userchat values('"+name+"','"+ChatM+"','all')";
-                    stmt.executeUpdate(query);
-                    }
-                catch (SQLException e) {
-                                	// TODO Auto-generated catch block
-                                        e.printStackTrace();
-                                        }
+                ChatMessageInsert cm=new ChatMessageInsert();
+                cm.setValues(name,ChatM,CurrentDate);
+                cm.chatins();
+
       	
                 response.sendRedirect("chat.jsp?uname="+name+"");
                 out.println("</body></html>");

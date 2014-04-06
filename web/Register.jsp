@@ -50,6 +50,14 @@ and open the template in the editor.
                 height: 25px;
                 background: rgba(255,255,255,0.18);
                 border: 0 px ;
+                color: white;
+                font-weight: bolder;
+                font-size: large;
+                }
+                .foot{
+                color:whitesmoke;
+                text-align: center;
+                margin-top: 20em;
                 }
 </style>
 
@@ -63,6 +71,7 @@ and open the template in the editor.
 <div id="headingDIV"><h1 align='center'><font size='16' color='darkgray'><i>Register </i></font></h1></div>
 
     <br><br><br><br><br><br><br><br><br>
+    <form action="Reg" method="get">
                                                         <!-- Table for Register -->        
 <table class="tab" border="4" >
     
@@ -81,7 +90,7 @@ and open the template in the editor.
         <td><input type="password" name="pswd" class="txtstyle"></td>
     </tr>
     
-    <form action="Reg" method="get">
+    
     <tr>
         <td align="center"><font size="5"><i><b>Email id:</b></i></font></td>
         <td><input  type="text" name="eid" class="txtstyle"></td>
@@ -101,6 +110,7 @@ and open the template in the editor.
 </table>
     </form>  
 
-		
+	                                                    <!-- Footer Notice-->
+    <div class="foot">This site is best viewed in Google Chrome and at 1920x1080 resolution. This website requires Java Script Enabled.</div>	
 </body>
 </html>

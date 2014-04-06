@@ -1,12 +1,13 @@
-package base;
+package dbsrv;
 
 
+import base.Cnct;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class LogB {
+public class usrchat {
 	
 	private String name;
 	private String password;

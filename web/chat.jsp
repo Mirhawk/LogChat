@@ -1,3 +1,5 @@
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.ResultSet"%>
@@ -6,17 +8,12 @@
 <%@page import="base.Cntlr"%>
 <%@page import="base.LogB"%>
 
-
-
-
-<!-- All css for design -->
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Chat Page</title>
+                                        <!-- All css for design -->
 <style type="text/css">
 .ChatWindowCSS {
         resize: none;
@@ -46,24 +43,49 @@
 	height: 100px;
 	width: 1200px;
         background: rgba(255,255,255,0.2);
+        color: silver;
+        font-weight: bolder;
+        font-size: large;
 }
+
 .tab{
-    position: absolute;
-    left: 20em;
-    background: rgba(255,255,255,0);
-    font-size: x-large;
+        position: absolute;
+        left: 20em;
+        background: rgba(255,255,255,0);
+        font-size: x-large;
 }
+
 .tab1{
-    position: absolute;
-    right:12em;
-    background: rgba(255,255,255,0);
-    font-size: x-large
+        position: absolute;
+        right:12em;
+        background: rgba(255,255,255,0);
+        font-size: x-large
 }
+
 .backgr {
-         background-image: url(images/chat_back.jpg);
-        }
+        background-image: url(images/chat_back.jpg);
+}
+
+.foot{
+        color:whitesmoke;
+        text-align: center;
+        margin-top: 0em;
+}
+         .TimeDateCSS{
+        color: silver;
+        text-align: right;
+        background: rgba(255,255,255,0);
+        font-weight: bolder;
+        font-size: large;
+        position: absolute;
+        right:0em;
+        resize: none;
+        border: none;
+}
 </style>
-<!--
+
+                                        
+                         <!-- Tried Coding to refresh only part page, but failed. Hence temporarily refreshing entire page
 <script type="text/javascript"       src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
 
 <script type="text/javascript">
@@ -81,21 +103,49 @@ function () {
     }, 1000);
     </script>-->
 
+                                            <!--Script for Time-->
+<script>
+var myTimeVar=setInterval(function(){myTimer()},1000);
+function myTimer()
+{
+var d=new Date();
+var t=d.toLocaleTimeString();
+document.getElementById("showtime").innerHTML=t;
+}
+</script>
+
+                                            <!--Script for Date-->
+<script>
+var myDateVar=setInterval(function(){myDateShower()},1000);
+function myDateShower()
+{
+//var da=new Date();
+//var ta=da.toLocaleDateString();
+//document.getElementById("showdate").innerHTML=ta;
+var d = new Date();
+    var curr_date = d.getDate();
+    var curr_month = d.getMonth() + 1; //Months are zero based
+    var curr_year = d.getFullYear();
+    var ta=curr_year+"-"+curr_month+"-"+curr_date;
+    document.getElementById("showdate").innerHTML=ta;
+}//out.println("Date: "+myDateString);
+</script>
+
 </head>
 
-<body class="backgr">
-    <!--Online User Name-->
+<body class="backgr" >
+                                            <!--Online User Name-->
     <div style="float: right;"><font size="5" color="green"><b>Hello <%String name=request.getParameter("uname"); out.print(name);%>!</font></b></div><br><br>
                
                                             <!--Logout Button-->
         <form action="LogoutServlet"  method="get"> 
     <%session.setAttribute("delname", name);%>
-    <input type="submit" style="float: right;" name="logout" id="logout" value="Logout"/><br><br>
+    <input type="submit" style="float: right;" name="logout" id="logout" value="Logout"/>
         </form>
+    <br><br>
     
                                             <!--Main Page Coding-->
-    
-<span class="tab"><font color="gold"><b>Chat Window</b></font></span> <span class="tab1"><font color="gold"><b>Online Users</b></font></span><br><br>
+    <span class="tab"><font color="gold"><b>Chat Window</b></font></span> <span class="tab1"><font color="gold"><b>Online Users</b></font></span><br><br>
     <div id="getdata">
     <textarea name="ChatWindow" readonly="readonly" class="ChatWindowCSS" id="ChatWindow">
 
@@ -105,7 +155,6 @@ function () {
 
 
 <%                                          //Code For Chatting Window
-    
 String csend;
 String cchat;
 String crec;
@@ -127,7 +176,8 @@ String crec;
     String cquery;
     try {        
          Statement cstmt = (Statement) ccon.createStatement();
-         cquery = "SELECT * from userchat";
+//         cquery = "SELECT * from userchat";
+         cquery="SELECT * FROM userchat WHERE dtm >= CURDATE()";
          cstmt.executeQuery(cquery);
          ResultSet rs = cstmt.getResultSet();
          while(rs.next()){
@@ -205,11 +255,21 @@ String crec;
 <%                                          //Sending name of online user
     session.setAttribute("uname", name);%>
               
-    <textarea name="ChatMe" class="ChatMsgCSS" id="ChatMessage" value="ChatMessage"></textarea>
+<textarea name="ChatMe" class="ChatMsgCSS" id="ChatMessage" value="ChatMessage"></textarea>
     <br><br>
     <!--This is comment//sql = "Select sum(amt) as tot From trig where dt >= '" & dtm & "' AND Trans LIKE 'withdraw'"-->
     <input type="submit" name="send" id="send" value="Send" />
+    
+    
+                                            <!--Displaying Dynamic Time-->
+    <textarea name="showtime" class="TimeDateCSS" readonly="readonly" id="showtime"></textarea>  
+    
+                                            <!--Displaying Dynamic Date-->
+    <br><textarea name="showdate" class="TimeDateCSS" readonly="readonly" id="showdate"></textarea>  
 </form>
+<br><br><br>
+                                            <!--Footer Notice-->
+    <div class="foot">This site is best viewed in Google Chrome and at 1920x1080 resolution. This website requires Java Script Enabled.</div>
 
 </body>
 </html>

@@ -88,7 +88,7 @@ public class Reg extends HttpServlet {
                             ResultSet rs = stmt.getResultSet();
                             stmt.executeUpdate(query);
                             out.print("<script language='JavaScript'>alert('Registration Successfull!! Login using the username and password.');</script>");
-                            RequestDispatcher rd = request.getRequestDispatcher("index.html");
+                            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
                             rd.include(request, response);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -10,7 +10,7 @@
     </servlet>
     <servlet>
         <servlet-name>LogB</servlet-name>
-        <servlet-class>base.LogB</servlet-class>
+        <servlet-class>dbsrv.LogB</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Reg</servlet-name>
@@ -26,11 +26,15 @@
     </servlet>
     <servlet>
         <servlet-name>ChatMessageInsert</servlet-name>
-        <servlet-class>base.ChatMessageInsert</servlet-class>
+        <servlet-class>dbsrv.ChatMessageInsert</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>base.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>usrchat</servlet-name>
+        <servlet-class>dbsrv.usrchat</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Cnct</servlet-name>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>usrchat</servlet-name>
+        <url-pattern>/usrchat</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

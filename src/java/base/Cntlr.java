@@ -11,6 +11,7 @@ package base;
  * @author Mirhawk
  */
 
+import dbsrv.LogB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
