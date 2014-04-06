@@ -15,9 +15,11 @@ and open the template in the editor.
         .back   {
                 background-image: url(images/reg_back.jpg);
                 }
+                
         .txtcss {
                 border :0 px;
                 }   
+                
         .tab    {
                 background-image: url(images/tabback.jpg);
                 width: 390px;
@@ -28,6 +30,7 @@ and open the template in the editor.
                 border: 2px;
                 color: white;
                 }
+                
         .btntab {
                 width: 400px;
                 height: 100px;
@@ -37,6 +40,7 @@ and open the template in the editor.
                 font: bold;
                 font-size : large;
                 }
+                
         .btnsize{ 
                 width:120px;
                 height:40px;
@@ -45,6 +49,7 @@ and open the template in the editor.
                 font-weight: bold;
                 font-size: large;                
                 }
+                
         .txtstyle{
                 width: 320px;
                 height: 25px;
@@ -54,24 +59,101 @@ and open the template in the editor.
                 font-weight: bolder;
                 font-size: large;
                 }
-                .foot{
+                
+        .foot{
                 color:whitesmoke;
                 text-align: center;
                 margin-top: 20em;
                 }
 </style>
+                                                <!--Script for checking Validations-->
+<script>
+function validateForm()
+{
+    //Checking for empty Name
+var xn=document.forms["myForm"]["name"].value;
+if (xn===null || xn==="")
+  {
+  alert("Name must be filled out!");
+  return false;
+  }
+  
+                                    //Checking for empty username
+var xu=document.forms["myForm"]["usn"].value;
+if (xu===null || xu==="")
+  {
+  alert("User Name must be filled out!");
+  return false;
+  }
 
-        <title>Registration</title>
+                                    //Checking for empty Password
+var xp=document.forms["myForm"]["pswd"].value;
+var pl = xp.length;
+if (xp===null || xp==="")
+  {
+  alert("Password must not be empty!");
+  return false;
+  }
+  
+                                  //Checking for Password less than 8 characters
+if(pl<8)
+  {
+  alert("Password must not be of less than 8 characters!");
+  return false;
+  }
+  
+                                //Checking for empty password should contain at least one number
+                                //Checking with regular expression
+var xpn=document.forms["myForm"]["pswd"].value;
+var regexNum = /\d/g;// Global check for numbers
+var c = regexNum.test(xpn);
+if(c===false)
+{
+    alert("Invalid Password! Password must contain anumber!")
+}
+
+                                //Checking for empty password should contain at least one of mentioned symbols
+                                //Checking with regular expression
+//var xps=document.forms["myForm"]["pswd"].value;
+//var regexSymbol = /^[!@#$%*]+$/;
+//var c = regexSymbol.test(xps);
+//if(c===false)
+//{
+//    alert("Invalid Password! Password must at least one symbol of !@#$%*")
+//}
+
+                               //Checking for empty E mail id
+var xem=document.forms["myForm"]["eid"].value;
+if (xem===null || xem==="")
+  {
+  alert("E Mail id name must be filled out!");
+  return false;
+  }
+
+                               //Checking for valid E mail id
+var xe=document.forms["myForm"]["eid"].value;
+var atpos=xe.indexOf("@");
+var dotpos=xe.lastIndexOf(".");
+if (atpos<1 || dotpos<atpos+2 || dotpos+2>=xe.length)
+  {
+  alert("Not a valid e-mail address");
+  return false;
+  }
+}
+</script>
+
+
+<title>Registration</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
 </head>
   
 <body class="back">
 <br>
-<div id="headingDIV"><h1 align='center'><font size='16' color='darkgray'><i>Register </i></font></h1></div>
+<div id="headingDIV"><h1 align='center'><font size='16' color='darkgray'><i>Register</i></font></h1></div>
 
     <br><br><br><br><br><br><br><br><br>
-    <form action="Reg" method="get">
+    <form name="myForm" onsubmit="return validateForm()" action="Reg" method="get">
                                                         <!-- Table for Register -->        
 <table class="tab" border="4" >
     
