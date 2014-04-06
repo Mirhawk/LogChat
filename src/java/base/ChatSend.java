@@ -41,7 +41,7 @@ public class ChatSend extends HttpServlet {
 		out.println("<html> <body>");
 		
                 ChatMessageInsert cm=new ChatMessageInsert();
-                cm.setValues(name,ChatM,CurrentDate);
+                cm.setChatValues(name,ChatM,CurrentDate);
                 cm.chatins();
       	
                 response.sendRedirect("chat.jsp?uname="+name+"");

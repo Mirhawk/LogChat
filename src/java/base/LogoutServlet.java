@@ -11,6 +11,7 @@ package base;
  * @author Mirhawk
  */
 
+import dbsrv.UserLogOut;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -39,22 +40,11 @@ public class LogoutServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
                 
-                String name=(request.getSession().getAttribute("delname")).toString();
-		out.println("<html> <body>");
-		
-		Cnct cn = new Cnct();
-		Connection con = cn.getConnection();
-                String query;
-                try {        
-                    Statement stmt = (Statement) con.createStatement();
-                    query = "delete from useronline where usronline='"+name+"'";
-                    stmt.executeUpdate(query);
-                    }
-                catch (SQLException e) {
-                                	// TODO Auto-generated catch block
-                                        e.printStackTrace();
-                                        }
-                
+                String name=(request.getSession().getAttribute("delname")).toString();                
+
+                UserLogOut ul =new UserLogOut();
+                ul.setdelValues(name);
+                ul.usroff();
                 out.print("<script language='JavaScript'>alert('You have logged out!');</script>");
                 
                 RequestDispatcher rd = request.getRequestDispatcher("index.jsp");

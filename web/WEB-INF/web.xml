@@ -36,6 +36,14 @@
         <servlet-name>usrchat</servlet-name>
         <servlet-class>dbsrv.usrchat</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegEntry</servlet-name>
+        <servlet-class>dbsrv.RegEntry</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserLogOut</servlet-name>
+        <servlet-class>dbsrv.UserLogOut</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Cnct</servlet-name>
         <url-pattern>/Cnct</url-pattern>
@@ -71,6 +79,14 @@
     <servlet-mapping>
         <servlet-name>usrchat</servlet-name>
         <url-pattern>/usrchat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegEntry</servlet-name>
+        <url-pattern>/RegEntry</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserLogOut</servlet-name>
+        <url-pattern>/UserLogOut</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

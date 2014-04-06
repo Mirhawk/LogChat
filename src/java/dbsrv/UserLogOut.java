@@ -5,27 +5,22 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ChatMessageInsert {
+public class UserLogOut {
 		Cnct cn = new Cnct();
 		Connection con = cn.getConnection();
-                String query;
-                String csend;
-                String ChatM;
-                String Dte;
-                public void setChatValues(String csend,String ChatM,String Dte)
+                String delname;
+                public void setdelValues(String delname)
                     {
-                    this.csend=csend;
-                    this.ChatM=ChatM;
-                    this.Dte=Dte;
+                    this.delname=delname;
                     }
-                public void chatins()
+                public void usroff()
                 	{
         		Cnct cn = new Cnct();
         		Connection con = cn.getConnection();
                         String query;
                         try {        
                             Statement stmt = (Statement) con.createStatement();
-                            query = "insert into userchat values('"+csend+"','"+ChatM+"','all','"+Dte+"')";
+                            query = "delete from useronline where usronline='"+delname+"'";
                             stmt.executeUpdate(query);
                             }
                         catch (SQLException e) {

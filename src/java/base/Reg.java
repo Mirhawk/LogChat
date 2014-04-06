@@ -6,12 +6,9 @@ package base;
  * and open the template in the editor.
  */
 
+import dbsrv.RegEntry;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -68,34 +65,24 @@ public class Reg extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        response.setContentType("text/html");
+                response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
 		String name=request.getParameter("usn");
 		String password = request.getParameter("pswd");
 		
 		out.println("<html> <body>");
-		Cnct cn = new Cnct();
-		Connection con = cn.getConnection();
+                
+                RegEntry re=new RegEntry();
+                re.setRegValues(name, password);
+                re.regins();
+                out.print("<script language='JavaScript'>alert('Registration Successfull!! Login using the username and password.');</script>");
+                
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                rd.include(request, response);
 		
-		String query = "insert into users values('"+name+"','"+password+"')";
-                out.println("<br><br>");
-
-		
-                Statement stmt;
-		try {
-		            stmt = con.prepareStatement(query);
-                            ResultSet rs = stmt.getResultSet();
-                            stmt.executeUpdate(query);
-                            out.print("<script language='JavaScript'>alert('Registration Successfull!! Login using the username and password.');</script>");
-                            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-                            rd.include(request, response);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		out.println("</body></html>");
-}
+                out.println("</body></html>");
+                }
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -116,8 +103,5 @@ public class Reg extends HttpServlet {
      *
      * @return a String containing servlet description
      */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+    
 }
